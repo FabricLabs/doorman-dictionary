@@ -1,6 +1,6 @@
 const xml2js = require('xml2js');
 
-module.exports = function (Kirbi) {
+module.exports = function (Doorman) {
 	const parser = new xml2js.Parser();
 	return {
 		commands: [
@@ -14,7 +14,7 @@ module.exports = function (Kirbi) {
 				if (!word) {
 					cb({
 						embed: {
-							color: Kirbi.Config.discord.defaultEmbedColor,
+							color: Doorman.Config.discord.defaultEmbedColor,
 							description: 'I won\'t define an empty string.'
 						}
 					}, msg);
@@ -22,7 +22,7 @@ module.exports = function (Kirbi) {
 					return;
 				}
 
-				require('request')(`http://www.dictionaryapi.com/api/v1/references/collegiate/xml/${word}?key=${Kirbi.Auth.dictionary_api_key}`, (err, res, body) => {
+				require('request')(`http://www.dictionaryapi.com/api/v1/references/collegiate/xml/${word}?key=${Doorman.Auth.dictionary_api_key}`, (err, res, body) => {
 					let definitionResult = '';
 					parser.parseString(body, (err, result) => {
 						const wordList = result.entry_list.entry;
@@ -61,7 +61,7 @@ module.exports = function (Kirbi) {
 
 						cb({
 							embed: {
-								color: Kirbi.Config.discord.defaultEmbedColor,
+								color: Doorman.Config.discord.defaultEmbedColor,
 								title: word,
 								description: definitionResult,
 								footer: {

@@ -1,5 +1,5 @@
-# kirbi-dictionary module
-A module for [Kirbi](https://github.com/richardson-media-house/kirbi), that adds a command to look up definitions and pronunciation of words.
+# doorman-dictionary module
+A module for [Doorman](https://github.com/FabricLabs/doorman-dictionary), that adds a command to look up definitions and pronunciation of words.
 
 ## Usage
 
